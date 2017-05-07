@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+var test;
 
 //Loads the correct sidebar on window load,
 
@@ -181,18 +182,64 @@ app.controller('load_data', function($scope, $http){
         console.log(startDate);
         startDate = moment(startDate, "D MMM, YYYY").format();
         var endDate = $("#edate1").val();
-        startDate = moment(startDate, "D MMM, YYYY").format();
+        alert(startDate);
+        endDate = moment(endDate, "D MMM, YYYY").format();
+        alert(startDate);
+        $scope.startDate = startDate;
+        $scope.endDate = endDate;
         
         /*
         
             Waiting for the API.
         */
-        $http.post('request-url',
-                   { 'timeMin' : startDate,
-                     'timeMax' : endDate,
-                     'id' : "pavangondhi@gmail.com"
-                   }).success(function(response){
-            $scope.availableSlots = response.data;
+        $http.get('test.json'
+//                  ,
+//                   { 'timeMin' : startDate,
+//                     'timeMax' : endDate,
+//                     'id' : "pavangondhi@gmail.com"
+//                   }
+                 ).success(function(response){
+            $scope.busySlots = response.busy;
+            interval = 15;
+            for(i=0;i<$scope.busySlots.length;i++)
+            {
+                /*2017-05-05T11:00:00-07:00*/
+                console.log($scope.busySlots[i].start);
+                test = $scope.busySlots[i].start;
+                console.log(test);
+                $scope.busySlots[i].start = moment($scope.busySlots[i].start);
+                $scope.busySlots[i].end = moment($scope.busySlots[i].end);
+            }
+            
+            $scope.availableSlots = {};
+            test = $scope.startDate;
+            alert($scope.startDate);
+            smallStart = moment($scope.startDate);
+            smallEnd = moment($scope.startDate).add(15, 'm');
+            console.log("fuck"+smallEnd);
+            while(smallEnd<=$scope.endDate)
+            {
+                
+                flag = false;
+                for(i=0;i<$scope.busySlots.length;i++)
+                {
+                    /*2017-05-05T11:00:00-07:00*/
+                    if(($scope.busySlots[i].startDate<smallEnd && $scope.busySlots[i].endDate>smallEnd) || ($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallStart) || (($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallEnd)) )
+                        flag = true;
+                }
+                if(!flag)
+                {
+                    $scope.availableSlots.push({date: smallStart.format("yyyy-mm-dd"), times : smallStart.format("H:m")});
+                }
+                smallStart = smallEnd
+                smallEnd = smallEnd.add(15, 'm');
+            
+            }
+            
+            test = $scope.availableSlots;
+            console.log($scope.availableSlots);
+            
+            
             /*
                 Data is the JSON file, parse it.
             */
@@ -219,7 +266,7 @@ app.controller('load_data', function($scope, $http){
         }
     }
     
-    $scope.sendSelectedDates = function(){
-        
-    };
+//    $scope.sendSelectedDates = function(){
+//        $http.
+//    };
 });

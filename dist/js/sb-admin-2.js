@@ -203,6 +203,7 @@ app.controller("myCtrl", function($scope, $http) {
       }
 });
 
+var app = angular.module('mod_app', []);
 app.controller('load_data', function($scope, $http){
     $scope.senddata = function(){
         console.log("I asmf idiot");
@@ -215,9 +216,9 @@ app.controller('load_data', function($scope, $http){
         alert(startDate);
         $scope.startDate = startDate;
         $scope.endDate = endDate;
-
+        
         /*
-
+        
             Waiting for the API.
         */
         $http.get('test.json'
@@ -238,15 +239,16 @@ app.controller('load_data', function($scope, $http){
                 $scope.busySlots[i].start = moment($scope.busySlots[i].start);
                 $scope.busySlots[i].end = moment($scope.busySlots[i].end);
             }
-
-            $scope.availableSlots = {};
+            
+            $scope.availableSlots = [];
             test = $scope.startDate;
             alert($scope.startDate);
             smallStart = moment($scope.startDate);
-            smallEnd = moment($scope.startDate).add(15, 'm');
-            console.log("fuck"+smallEnd);
+            smallEnd = moment(moment($scope.startDate).add(15, 'm')).format();
+            console.log(smallEnd);
             while(smallEnd<=$scope.endDate)
             {
+                            console.log("kill me again......."+smallEnd);
 
                 flag = false;
                 for(i=0;i<$scope.busySlots.length;i++)
@@ -257,30 +259,34 @@ app.controller('load_data', function($scope, $http){
                 }
                 if(!flag)
                 {
+                    test = $scope.availableSlots;
                     $scope.availableSlots.push({date: smallStart.format("yyyy-mm-dd"), times : smallStart.format("H:m")});
+                    console.log("sdfjhdjdkvfdslkjfvdsk");
+                    console.log($scope.availableSlots);
                 }
                 smallStart = smallEnd
-                smallEnd = smallEnd.add(15, 'm');
-
+                test = smallEnd;
+                smallEnd = moment(moment(smallEnd).add(15, 'm')).format();
+            
             }
-
-            test = $scope.availableSlots;
+            
+//            test = $scope.availableSlots;
             console.log($scope.availableSlots);
-
-
+            
+            
             /*
                 Data is the JSON file, parse it.
             */
         });
     }
-
+    
     $scope.removeDate=function(dat)
     {
         $scope.availableSlots = $scope.availableSlots.filter(function(el) {
             return el.date !== dat;
         });
     }
-
+    
     $scope.removeTime = function(dat, tim)
     {
         for(i=0; i<$scope.availableSlots.length;i++)
@@ -288,12 +294,12 @@ app.controller('load_data', function($scope, $http){
             if($scope.availableSlots[i].date == dat)
             {
                 $scope.availableSlots[i].times = $scope.availableSlots[i].times.filter(function(el){
-                   return el !== tim;
+                   return el !== tim; 
                 });
             }
         }
     }
-
+    
 //    $scope.sendSelectedDates = function(){
 //        $http.
 //    };

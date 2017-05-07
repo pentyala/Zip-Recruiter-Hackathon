@@ -301,9 +301,7 @@ app.controller('load_data', function($scope, $http){
     }
     
     $scope.sendSelectedDates = function(){
-        $http.post('url'
-                  ,
-                   {
+        $http.post('url',{
                       'summary': 'Blah Blah Blah',
                       'location': 'Blah Blah Blah',
                       'description': 'Blah Blah BlahBlah Blah Blah',
@@ -326,12 +324,11 @@ app.controller('load_data', function($scope, $http){
                         'overrides': [
                           {'method': 'email', 'minutes': 24 * 60},
                           {'method': 'popup', 'minutes': 10},
-                        ],
-                      },
-                    };
-                 ).success(function{
+                        ]
+                      }
+                    }).success(function(){
                            alert("mail sent successfully.");
                            
                            });
-    };
+    }
 });

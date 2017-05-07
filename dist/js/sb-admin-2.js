@@ -29,7 +29,7 @@ $(document).ready(function(){
     $("#c8").css("background-color","#eee");
     $("#c9").css("background-color","#eee");
     $("#c10").css("background-color","#eee");
-    
+
     $("#c1").click(function(){
         $("#c1").css("background-color","#f9f9f9");
         for(i=1;i<11;i++)
@@ -37,7 +37,7 @@ $(document).ready(function(){
             if(i==1)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -51,7 +51,7 @@ $(document).ready(function(){
             if(i==2)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -65,7 +65,7 @@ $(document).ready(function(){
             if(i==3)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -79,7 +79,7 @@ $(document).ready(function(){
             if(i==4)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -93,7 +93,7 @@ $(document).ready(function(){
             if(i==5)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -107,7 +107,7 @@ $(document).ready(function(){
             if(i==6)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -121,7 +121,7 @@ $(document).ready(function(){
             if(i==7)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -148,7 +148,7 @@ $(document).ready(function(){
             if(i==9)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
@@ -162,19 +162,47 @@ $(document).ready(function(){
             if(i==10)
             {
                 $("#c"+i).css("background-color","#f9f9f9");
-                $("#cand"+i).show();    
+                $("#cand"+i).show();
                 continue;
             }
             $("#c"+i).css("background-color","#eee");
             $("#cand"+i).hide();
         }
     });
-    
-    
+
+
 });
 
 
 var app = angular.module('mod_app', []);
+app.controller("myCtrl", function($scope, $http) {
+
+  $http({
+      method: 'GET',
+      url: 'index.php'
+  }).then(function successCallback(response) {
+        $scope.event_details = response;
+        $scope.summary = response.summary;
+        $scope.name= "Niranjan";
+        $scope.email = response.attendees[0].email;
+        var temp_date = response.start.dateTime;
+        temp_date = moment(temp_date).format("YYYY-MM-DD HH:mm:ss");
+        var temp_arr = temp_date.split(" ");
+        $scope.date_event = temp_arr[0];
+        $scope.time_event = temp_arr[1];
+      }, function errorCallback(response) {});
+
+      $scope.confirm_event = function(){
+        var email = "sample" ; /// get from localstorage
+        $scope.event_details.attendees[0].email = email;
+        $http({
+            method: 'POST',
+            data: $scope.event_details,
+            url: 'index.php'
+        }).then(function successCallback(response) {  }, function errorCallback(response) {});
+      }
+});
+
 app.controller('load_data', function($scope, $http){
     $scope.senddata = function(){
         console.log("I asmf idiot");
@@ -187,9 +215,9 @@ app.controller('load_data', function($scope, $http){
         alert(startDate);
         $scope.startDate = startDate;
         $scope.endDate = endDate;
-        
+
         /*
-        
+
             Waiting for the API.
         */
         $http.get('test.json'
@@ -210,7 +238,7 @@ app.controller('load_data', function($scope, $http){
                 $scope.busySlots[i].start = moment($scope.busySlots[i].start);
                 $scope.busySlots[i].end = moment($scope.busySlots[i].end);
             }
-            
+
             $scope.availableSlots = {};
             test = $scope.startDate;
             alert($scope.startDate);
@@ -219,7 +247,7 @@ app.controller('load_data', function($scope, $http){
             console.log("fuck"+smallEnd);
             while(smallEnd<=$scope.endDate)
             {
-                
+
                 flag = false;
                 for(i=0;i<$scope.busySlots.length;i++)
                 {
@@ -233,26 +261,26 @@ app.controller('load_data', function($scope, $http){
                 }
                 smallStart = smallEnd
                 smallEnd = smallEnd.add(15, 'm');
-            
+
             }
-            
+
             test = $scope.availableSlots;
             console.log($scope.availableSlots);
-            
-            
+
+
             /*
                 Data is the JSON file, parse it.
             */
         });
     }
-    
+
     $scope.removeDate=function(dat)
     {
         $scope.availableSlots = $scope.availableSlots.filter(function(el) {
             return el.date !== dat;
         });
     }
-    
+
     $scope.removeTime = function(dat, tim)
     {
         for(i=0; i<$scope.availableSlots.length;i++)
@@ -260,12 +288,12 @@ app.controller('load_data', function($scope, $http){
             if($scope.availableSlots[i].date == dat)
             {
                 $scope.availableSlots[i].times = $scope.availableSlots[i].times.filter(function(el){
-                   return el !== tim; 
+                   return el !== tim;
                 });
             }
         }
     }
-    
+
 //    $scope.sendSelectedDates = function(){
 //        $http.
 //    };

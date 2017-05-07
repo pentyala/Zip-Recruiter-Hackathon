@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Trojan Background Check</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .side_menu{
+            color: black;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- /.navbar-header -->
+
+        </nav>
+
+        <div class="row">
+
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+
+                <div class="navbar-default sidebar" style="margin-top:0px;" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a id="c1" class="side_menu" href="#"> Candidate 1</a>
+                            </li>
+                             <li>
+                                <a id="c2" class="side_menu"  href="#"> Candidate 2</a>
+                            </li>
+                             <li>
+                                <a id="c3" class="side_menu" href="#"> Candidate 3</a>
+                            </li>
+                             <li>
+                                <a id="c4" class="side_menu" href="#"> Candidate 4</a>
+                            </li>
+                             <li>
+                                <a id="c5" class="side_menu" href="#"> Candidate 5</a>
+                            </li>
+                             <li>
+                                <a id="c6" class="side_menu" href="#"> Candidate 6</a>
+                            </li>
+                             <li>
+                                <a id="c7" class="side_menu" href="#"> Candidate 7</a>
+                            </li>
+                             <li>
+                                <a id="c8" class="side_menu" href="#"> Candidate 8</a>
+                            </li>
+                             <li>
+                                <a id="c9" class="side_menu" href="#"> Candidate 9</a>
+                            </li>
+                             <li>
+                                <a id="c10" class="side_menu" href="#"> Candidate 10</a>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </div>
+ <input type="date" class="datepicker">
+        
+            <div class="col-sm-10 col-md=10 col-ld-10">
+
+                <div class="container-fluid">
+                    <div id="cand1">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 1</h1>
+                                <div class = "col-lg-12">
+                                    <span class="col-lg-2">Aditya Kiran Pentiyala</span>
+                                    <span class="col-lg-2">pentyala@usc.edu</span>
+                                    <span class="col-lg-2">+1 323-975-7800</span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="datepicker" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker2'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col-lg-2"><button>Send</button></span>
+                                </div>
+                                <div class = "col-lg-12">
+                                    <span class="col-lg-2">Pavan Gondhi</span>
+                                    <span class="col-lg-2">gondhi@usc.edu</span>
+                                    <span class="col-lg-2">+1 323-567-7800</span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker3'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker4'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col-lg-2"><button>Send</button></span>
+                                  </div>
+                                <div class = "col-lg-12">
+                                    <span class="col-lg-2">Niranjan</span>
+                                    <span class="col-lg-2">ninja@usc.edu</span>
+                                    <span class="col-lg-2">+1 213-457-7230</span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker5'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker6'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col-lg-2"><button>Send</button></span>
+                                  </div>
+                                <div class = "col-lg-12">
+                                    <span class="col-lg-2">Harshita Jain</span>
+                                    <span class="col-lg-2">jainh@usc.edu</span>
+                                    <span class="col-lg-2">+1 212-234-5600</span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker7'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="form-group col-lg-2">
+                                        <span class='input-group date' id='datetimepicker8'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col-lg-2"><button>Send</button></span>
+                                    </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cand2">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 2</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand3">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 3</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 4</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand5">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 5</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 6</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand7">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 7</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 8</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand9">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Candidate 9</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand10">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Candidate 10</h1>
+                        sjdkfhbkjl
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                    </div>
+                </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        sadfgg
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    			<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+    <script src="dist/js/sb-admin-2.js"></script>
+     <script>
+        
+         $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+        </script>
+        
+
+</body>
+
+</html>

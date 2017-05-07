@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+        
+    </head>
+    <body>
+        
+        <div class="container-fluid">
+<!--
+            <div class="row">
+                <div col="col-sm-2 col-md-2 col-lg-2">
+                    image comes here
+                </div>
+            </div>
+-->         <br />
+            <div class="row">
+                <div class="col-sm-4 col-lg-4 col-md-4 col-md-offset-4 col-sm-offset-4 col-lg-offset-4">
+                    <div class="text-center">
+                        Please enter the email of the reference.<br /><br />
+                        <form>
+                            
+                          <div class="form-group">
+<!--                            <label for="mail1">Email address</label>-->
+                            <input type="email" class="form-control" id="mail" placeholder="Email" required>
+                          </div>
+                            <button type="button" id="send" class="btn btn-primary btn-md">Send Request</button>
+                        </form>
+                        <p id="after">
+                            Referal sent succesfully.
+                            <button type="button" id="send_another" class="btn btn-primary btn-md" onclick="location.reload()">Send another</button>
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.js"></script>
+        <script src="references.js"></script>
+        
+    </body>
+</html>

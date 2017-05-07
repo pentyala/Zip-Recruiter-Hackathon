@@ -1,13 +1,524 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="mod_app">
 <head>
-<meta http-equiv="refresh" content="0;url=pages/index.html">
-<title>SB Admin 2</title>
-<script language="javascript">
-    window.location.href = "pages/index.html"
-</script>
-</head>
-<body>
-Go to <a href="pages/index.html">/pages/index.html</a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <style>
+        body{
+            background-color: #f9f9f9;
+        }
+        .side_menu{
+            height: 50px;
+            font-size: 23px;
+            
+        }
+        a{
+            color: black;
+        }
+    </style>
+    </head>
+    <body>
+
+  
+        <body ng-controller="load_data">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+<!--
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+             /.navbar-header 
+
+        </nav>
+-->
+
+        <div class="row">
+
+            <div class="col s2">
+
+<br />
+                <br />
+                <div style="background-color:#eee;" class="" id="">
+                    
+                                 <div id="c1" class="side_menu" >
+                                <a id="c1" class="side_menu" href="#"> Candidate 1</a>
+                    </div>
+                              <div id="c2" class="side_menu">
+                                <a id="c2" class="side_menu"  href="#"> Candidate 2</a>
+                    </div>
+                              <div id="c3" class="side_menu">
+                                <a id="c3" class="side_menu" href="#"> Candidate 3</a>
+                    </div>   
+                              <div id="c4" class="side_menu">
+                                <a id="c4" class="side_menu" href="#"> Candidate 4</a>
+                    </div>   
+                              <div id="c5" class="side_menu">
+                                <a id="c5" class="side_menu" href="#"> Candidate 5</a>
+                    </div>   
+                              <div id="c6" class="side_menu">
+                                <a id="c6" class="side_menu" href="#"> Candidate 6</a>
+                    </div>   
+                              <div id="c7" class="side_menu">
+                                <a id="c7" class="side_menu" href="#"> Candidate 7</a>
+                    </div>   
+                              <div id="c8" class="side_menu">
+                                <a id="c8" class="side_menu" href="#"> Candidate 8</a>
+                    </div>   
+                              <div class="side_menu">
+                                <a id="c9" class="side_menu" href="#"> Candidate 9</a>
+                    </div>   
+                              <div class="side_menu">
+                                <a id="c10" class="side_menu" href="#"> Candidate 10</a>
+                    </div>   
+
+                </div>
+                
+                <div class="navbar-default sidebar" style="margin-top:0px;" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                
+
+
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </div>
+<!-- <input type="date" class="datepicker">-->
+        
+            <div class="col s10">
+
+                <div class="container-fluid">
+                    <div id="cand1">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 1</h1>
+                                <div class = "col s12">
+                                    <div class="row">
+                                    <div class="col s2">
+                                        <div class="input-field inline">
+                                            Aditya Kiran Pentyala</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            pentyala@usc.edu</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            +1(513)208-8768</div></div>
+                                        
+                                    <div class="col s2">
+                                        <div class="">
+                                            <input type='datetime' id="sdate1" class="datepicker" /></div>
+                                    </div>
+                                    <div class="col s2">
+                                        <input type='datetime' id="edate1" class="datepicker" />
+                                    </div>
+                                    <div class="col s2">
+                                        
+                                        <div class="input-field inline">
+                                            <!-- Modal Trigger -->
+                                              <a class="modal-trigger waves-effect waves-light btn" ng-click="senddata()" href="#modal1">Send</a>
+
+                                              <!-- Modal Structure -->
+                                              <div id="modal1" class="modal modal-fixed-footer">
+                                                <div class="modal-content">
+                                                  <p id="hiddable_p1">Please wait.Fetching the available time slots...</p>
+                                                    <div id="loadData1">
+                                                        <div ng-repeat = "x in "
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+                                                </div>
+                                              </div>
+                                        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "col s12">
+                                    <div class="row">
+                                    <div class="col s2">
+                                        <div class="input-field inline">
+                                            Aditya Kiran Pentyala</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            pentyala@usc.edu</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            +1(513)208-8768</div></div>
+                                        
+                                    <div class="col s2">
+                                        <div class="">
+                                            <input type='datetime' class="datepicker" /></div>
+                                    </div>
+                                    <div class="col s2">
+                                        <input type='datetime' class="datepicker" />
+                                    </div>
+                                    <div class="col s2">
+                                        
+                                        <div class="input-field inline">
+                                            <!-- Modal Trigger -->
+                                              <a class="modal-trigger waves-effect waves-light btn" href="#modal2">Send</a>
+
+                                              <!-- Modal Structure -->
+                                              <div id="modal2" class="modal modal-fixed-footer">
+                                                <div class="modal-content">
+                                                  <h4>Modal Header</h4>
+                                                  <p>A bunch of text</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+                                                </div>
+                                              </div>
+                                        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "col s12">
+                                    <div class="row">
+                                    <div class="col s2">
+                                        <div class="input-field inline">
+                                            Aditya Kiran Pentyala</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            pentyala@usc.edu</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            +1(513)208-8768</div></div>
+                                        
+                                    <div class="col s2">
+                                        <div class="">
+                                            <input type='datetime' class="datepicker" /></div>
+                                    </div>
+                                    <div class="col s2">
+                                        <input type='datetime' class="datepicker" />
+                                    </div>
+                                    <div class="col s2">
+                                        
+                                        <div class="input-field inline">
+                                            <!-- Modal Trigger -->
+                                              <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Send</a>
+
+                                              <!-- Modal Structure -->
+                                              <div id="modal3" class="modal modal-fixed-footer">
+                                                <div class="modal-content">
+                                                  <h4>Modal Header</h4>
+                                                  <p>A bunch of text</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+                                                </div>
+                                              </div>
+                                        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "col s12">
+                                    <div class="row">
+                                    <div class="col s2">
+                                        <div class="input-field inline">
+                                            Aditya Kiran Pentyala</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            pentyala@usc.edu</div></div>
+                                    <div class="col s2"><div class="input-field inline">
+                                            +1(513)208-8768</div></div>
+                                        
+                                    <div class="col s2">
+                                        <div class="">
+                                            <input type='datetime' class="datepicker" /></div>
+                                    </div>
+                                    <div class="col s2">
+                                        <input type='datetime' class="datepicker" />
+                                    </div>
+                                    <div class="col s2">
+                                        
+                                        <div class="input-field inline">
+                                            <!-- Modal Trigger -->
+                                              <a class="modal-trigger waves-effect waves-light btn" href="#modal4">Send</a>
+
+                                              <!-- Modal Structure -->
+                                              <div id="modal4" class="modal modal-fixed-footer">
+                                                <div class="modal-content">
+                                                  <h4>Modal Header</h4>
+                                                  <p>A bunch of text</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+                                                </div>
+                                              </div>
+                                        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cand2">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 2</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand3">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 3</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand4">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 4</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand5">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 5</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand6">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 6</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand7">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 7</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand8">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 8</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand9">
+                        <div class="row">
+                            <div class="col s12">
+                                <h1 class="page-header">Candidate 9</h1>
+                                sjdkfhbkjl
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                                asdfjkkja
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cand10">
+                <div class="row">
+                    <div class="col s12">
+                        <h1 class="page-header">Candidate 10</h1>
+                        sjdkfhbkjl
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                        asdfjkkja
+                        <br />
+                    </div>
+                </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    			<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
+            
+     <script>
+        
+         $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+        </script>
+        
+
 </body>
+
+
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  
+        
+        <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+         $('.datepicker').pickadate({
+             
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+        </script>
+        
+    </body>
 </html>

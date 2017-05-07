@@ -204,6 +204,35 @@ app.controller("myCtrl", function($scope, $http) {
 });
 
 var app = angular.module('mod_app', []);
+
+app.controller("myCtrl", function($scope, $http) {
+
+ $http({
+      method: 'GET',
+      url: 'index.php'
+  }).then(function successCallback(response) {
+        $scope.event_details = response;
+        $scope.summary = response.summary;
+        $scope.name= "Niranjan";
+        $scope.email = response.attendees[0].email;
+        var temp_date = response.start.dateTime;
+        temp_date = moment(temp_date).format("YYYY-MM-DD HH:mm:ss");
+        var temp_arr = temp_date.split(" ");
+        $scope.date_event = temp_arr[0];
+        $scope.time_event = temp_arr[1];
+      }, function errorCallback(response) {});
+
+     $scope.confirm_event = function(){
+        var email = "sample" ; /// get from localstorage
+        $scope.event_details.attendees[0].email = email;
+        $http({
+            method: 'POST',
+            data: $scope.event_details,
+            url: 'index.php'
+        }).then(function successCallback(response) {  }, function errorCallback(response) {});
+      }
+});
+
 app.controller('load_data', function($scope, $http){
     $scope.senddata = function(){
         console.log("I asmf idiot");

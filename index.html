@@ -52,34 +52,34 @@
             <br />
             <div style="background-color:#eee;" class="" id="">
               <div id="c1" class="side_menu" >
-                <a id="c1" class="side_menu" href="#"> Candidate 1</a>
+                <a id="c1" class="side_menu" href="#"> Pavan Kumar Gondhi</a>
               </div>
               <div id="c2" class="side_menu">
-                <a id="c2" class="side_menu"  href="#"> Candidate 2</a>
+                <a id="c2" class="side_menu"  href="#"> Aditya Pentyala</a>
               </div>
               <div id="c3" class="side_menu">
-                <a id="c3" class="side_menu" href="#"> Candidate 3</a>
+                <a id="c3" class="side_menu" href="#"> Niranjan</a>
               </div>
               <div id="c4" class="side_menu">
-                <a id="c4" class="side_menu" href="#"> Candidate 4</a>
+                <a id="c4" class="side_menu" href="#"> Harshita Jain</a>
               </div>
               <div id="c5" class="side_menu">
-                <a id="c5" class="side_menu" href="#"> Candidate 5</a>
+                <a id="c5" class="side_menu" href="#"> Hemant Sharma</a>
               </div>
               <div id="c6" class="side_menu">
-                <a id="c6" class="side_menu" href="#"> Candidate 6</a>
+                <a id="c6" class="side_menu" href="#"> Aarushi Goel</a>
               </div>
               <div id="c7" class="side_menu">
-                <a id="c7" class="side_menu" href="#"> Candidate 7</a>
+                <a id="c7" class="side_menu" href="#"> Shashank Kumar</a>
               </div>
               <div id="c8" class="side_menu">
-                <a id="c8" class="side_menu" href="#"> Candidate 8</a>
+                <a id="c8" class="side_menu" href="#"> Kritika Vaid</a>
               </div>
               <div class="side_menu">
-                <a id="c9" class="side_menu" href="#"> Candidate 9</a>
+                <a id="c9" class="side_menu" href="#"> Marco Papa</a>
               </div>
               <div class="side_menu">
-                <a id="c10" class="side_menu" href="#"> Candidate 10</a>
+                <a id="c10" class="side_menu" href="#"> Shamshian Sharihar</a>
               </div>
             </div>
             <div class="navbar-default sidebar" style="margin-top:0px;" role="navigation">
@@ -101,8 +101,19 @@
                   <h5><b>JOB APPLIED :</b> Software developer Intern, Cisco</h5>
                   <div class = "col s12">
                     <br>
+                    <nav>
+                     <div class="nav-wrapper">
+                       <ul class="left hide-on-med-and-down">
+                         <li><a class="waves-effect waves-light btn" onclick="markComplete()">Mark Complete</a></li>
+                         <li><a class="waves-effect waves-light btn" onclick="markInComplete()">Mark Incomplete</a></li>
+                         <li><a class="waves-effect waves-light btn" onclick="markCancelComplete()">Cancel Event</a></li>
+                         <li><a class="waves-effect waves-light btn" onclick="markDelComplete()">Delete Event</a></li>
+                         <li><a class="waves-effect waves-light btn" onclick="markUndoComplete()">Undo</a></li>
+                       </ul>
+                     </div>
+                   </nav>
                     <h5>REFERENCE LIST</h5>
-                    <div class="row">
+                    <div id="row1" style="display : block;"><br><div class="row">
                       <div class="col s2">
                         <div class="input-field inline">
                           Aditya Kiran Pentyala
@@ -148,43 +159,49 @@
                         <div class="input_field inline">
                           <a class="modal-trigger waves-effect waves-light btn" href="#createAppointment">Create Appointment</a>
                           <div id="createAppointment" class="modal modal-fixed-footer" ng-controller = "myCtrl">
-                            <div class="modal-content">
+                            <div class="modal-content"></form>
                               <div class = " col s12">
                                 <div class = "">
                                   <br>
                                   <div class = " col s12">
                                     <div class = "">
-                                      {{summary}}hi
+                                      <input type="text" placeholder="Referral's Email Address">
                                     </div>
                                   </div>
                                 </div>
                                 <br>
-                                <div class="row">
+
                                   <br>
-                                  <div class = " col s6">
+                                  <div class = " col s12">
                                     <div class = "">
-                                      {{name}}sdf
+                                      <input type="text" placeholder="Email Subject">
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                  <div class = "col s6">
+                                    <div class = "">
+                                      <input type="text" placeholder="Referral's Name">
                                     </div>
                                   </div>
                                   <div class = "col s6">
                                     <div class = "">
-                                      {{email}}sdf
+                                      <input type="text" placeholder="Referral's Phone number(optional)">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class = " col s6">
                                     <div class = "">
-                                      {{date_event}}sdf
+                                      Event Start Date : 11th May,2017
                                     </div>
                                   </div>
                                   <div class = " col s6">
                                     <div class = "">
-                                      {{time_event}}sdf
+                                      Event Start Time : 11:00 AM
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div></form>
                             </div>
                             <div class="modal-footer">
                               <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="confirm_event()">CONFIRM</a>
@@ -193,39 +210,13 @@
                         </div>
                       </div>
                       <div class="col s2">
-                        <div class="input-field inline">
-                          <!-- Modal Trigger -->
-                          <a class="modal-trigger waves-effect waves-light btn" ng-click="senddata()" href="#modal1">TimeSlots</a>
-                          <!-- Modal Structure -->
-                          <div id="modal1" class="modal modal-fixed-footer">
-                            <div class="modal-content">
-                              <p id="hiddable_p1">Please wait.Fetching the available time slots...</p>
-                              <div id="loadData1">
-                                Select a time slot to confirm.
-                                <div class="row">
-                                  <div ng-repeat = "x in availableSlots">
-                                    <div class="col s6">
-                                      <div><a href="!" ng-click="removeDate(x.date)">{{x.date}}</a></div>
-                                    </div>
-                                    <div class="col s6">
-                                      <div ng-repeat = "y in x.times">
-                                        {{y}} <br />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendSelectedDates">Send</a>
-                            </div>
-                          </div>
-                        </div>
+                        <input type="checkbox" id="myCheckbox" class="filled-in" />
+                        <label for="myCheckbox"></label>
 
                       </div>
 
-                    </div>
+                    </div><br></div>
+
                     <div class = "col s12">
                       <div class="row">
                         <div class="col s2">
@@ -570,6 +561,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
       <script src="dist/js/sb-admin-2.js"></script>
+      <script src="dist/js/navbar.js"></script>
       <script>
         $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month

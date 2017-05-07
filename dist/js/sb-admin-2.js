@@ -210,7 +210,7 @@ app.controller('load_data', function($scope, $http){
 //        console.log("I asmf idiot");
         $("#chose_time").hide();
         $("#loadData1").show();
-        
+
         var startDate = $("#sdate1").val();
 //        console.log(startDate);
         startDate = moment(startDate, "D MMM, YYYY").format();
@@ -220,19 +220,20 @@ app.controller('load_data', function($scope, $http){
 //        alert(startDate);
         $scope.startDate = startDate;
         $scope.endDate = endDate;
-        
+
         /*
-        
+
             Waiting for the API.
         */
-        $http.get("test.json"
-//                  ,
-//                   { 'timeMin' : startDate,
-//                     'timeMax' : endDate,
-//                     'id' : "pavangondhi@gmail.com"
-//                   }
+        $http.post("http://ec2-204-236-195-193.compute-1.amazonaws.com:8082/getAppointment"
+                 ,
+                  { 'timeMin' : startDate,
+                    'timeMax' : endDate,
+                    'id' : "primary"
+                  }
                  ).success(function(response){
-            $scope.busySlots = response.busy;
+                   console.log(response);
+            $scope.busySlots = response;
             interval = 15;
             for(i=0;i<$scope.busySlots.length;i++)
             {
@@ -243,9 +244,9 @@ app.controller('load_data', function($scope, $http){
                 $scope.busySlots[i].start = moment($scope.busySlots[i].start);
                 $scope.busySlots[i].end = moment($scope.busySlots[i].end);
 //                console.log($scope.busySlots[i]);
-                
+
             }
-            
+
 //            $scope.availableSlots = [{ date: '25/01/17', times: [ '12:00', '13:00' ] }, { date: '26/01/17', times: [ '12:00', '13:00' ] }];
             $scope.availableSlots = [];
             smallStart = moment($scope.startDate).format();
@@ -259,7 +260,7 @@ app.controller('load_data', function($scope, $http){
                 flag = false;
                 for(i=0;i<$scope.busySlots.length;i++)
                 {
-                   
+
                     smallStart = moment(smallStart);
                     smallEnd = moment(smallEnd);
                     if(($scope.busySlots[i].start<smallEnd && $scope.busySlots[i].end>smallEnd) || ($scope.busySlots[i].start>smallStart && $scope.busySlots[i].end<smallStart) || (($scope.busySlots[i].start>smallStart && $scope.busySlots[i].end<smallEnd)) )
@@ -270,6 +271,7 @@ app.controller('load_data', function($scope, $http){
                 }
                 if(!flag)
                 {
+                  console.log(smallStart);
                     $scope.availableSlots.push({date: smallStart.format("DD/MM/YY"), times : smallStart.format("HH:mm")});
                 }
                 smallStart = smallEnd
@@ -279,10 +281,10 @@ app.controller('load_data', function($scope, $http){
             /*
                 Data is the JSON file, parse it.
             */
-            
-            
+
+
             /*parsing the same date multiple times*/
-            
+
             $scope.finaldisplay = [];
             for(i=0;i<$scope.availableSlots.length;i++)
             {
@@ -307,11 +309,11 @@ app.controller('load_data', function($scope, $http){
 //                    $scope.finaldisplay[j].push($scope.availableSlots.times);
                 }
             }
-//            console.log($scope.finaldisplay);
-            
+            console.log($scope.finaldisplay);
+
         });
     }
-    
+
     $scope.sendDates = function(){
 //        console.log($scope.finaldisplay.length);
         if($scope.finaldisplay.length == 0)
@@ -329,29 +331,40 @@ app.controller('load_data', function($scope, $http){
             console.log($scope.finaldisplay[i].times);
             for(j=0;j<$scope.finaldisplay[i].times.length;j++)
             {
-                $scope.sendableData.push({"date_times":(dt+$scope.finaldisplay[i].times[j])+" - "+(moment(dt, "DD/MM/YY").add(15,'m').format("DD/MM/YYHH:mm"))});
+                $scope.sendableData.push((dt+$scope.finaldisplay[i].times[j])+" - "+(moment(dt, "DD/MM/YY").add(15,'m').format("DD/MM/YYHH:mm")));
             }
         }
         console.log($scope.sendableData);
-        jsona = [];
-        jsona.push({"":"","":""})
-        $http.post("url"
-                  ,
-                   $scope.sendableData
+        //var dates  = JSON.stringify(["shdjgjasd", "ahdjgjhaD", "dhhjDVJh"]);
+        var datesfectched = $scope.sendableData
+        var dates  = JSON.stringify(datesfectched);
+
+        // jsona = [];
+        // jsona.push({"":"","":""})
+        var datesfinal = {
+          hr_email:"ziprecruiter784@gmail.com",
+          referrance_email:"nero.niranjan@gmail.com",
+          date_times:dates
+        }
+        console.log(datesfinal)
+        var parameter = JSON.stringify(datesfinal)
+        console.log(parameter)
+        $http.post("http://ec2-204-236-195-193.compute-1.amazonaws.com:8082/api/confirm_time_slot",
+                  parameter
                  ).success(function(){
-            alert("Mail sent");
+            alert("Appointment made.");
         });
         $("#chose_time").show();
         $("#loadData1").hide();
     }
-    
+
     $scope.removeDate=function(dat)
     {
         $scope.finaldisplay = $scope.finaldisplay.filter(function(el) {
             return el.date !== dat;
         });
     }
-    
+
     $scope.removeTime = function(dat, tim)
     {
         for(i=0; i<$scope.finaldisplay.length;i++)
@@ -359,12 +372,12 @@ app.controller('load_data', function($scope, $http){
             if($scope.finaldisplay[i].date == dat)
             {
                 $scope.finaldisplay[i].times = $scope.finaldisplay[i].times.filter(function(el){
-                   return el !== tim; 
+                   return el !== tim;
                 });
             }
         }
     }
-    
+
     $scope.sendSelectedDates = function(){
         console.log($scope.finaldisplay.length);
         if($scope.finaldisplay.length == 0)
@@ -399,7 +412,7 @@ app.controller('load_data', function($scope, $http){
                       }
                     }).success(function(){
                            alert("mail sent successfully.");
-                           
+
                            });
     }
 });

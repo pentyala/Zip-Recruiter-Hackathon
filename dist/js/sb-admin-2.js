@@ -331,7 +331,7 @@ app.controller('load_data', function($scope, $http){
             console.log($scope.finaldisplay[i].times);
             for(j=0;j<$scope.finaldisplay[i].times.length;j++)
             {
-                $scope.sendableData.push((dt+$scope.finaldisplay[i].times[j])+" - "+(moment(dt, "DD/MM/YY").add(15,'m').format("DD/MM/YYHH:mm")));
+                $scope.sendableData.push((dt+$scope.finaldisplay[i].times[j])+" - "+(moment(dt+$scope.finaldisplay[i].times[j], "DD/MM/YYHH:mm").add(15,'m').format("DD/MM/YYHH:mm")));
             }
         }
         console.log($scope.sendableData);
@@ -339,10 +339,10 @@ app.controller('load_data', function($scope, $http){
         var datesfectched = $scope.sendableData
         var dates  = JSON.stringify(datesfectched);
 
-        // jsona = [];
+       // jsona = [];
         // jsona.push({"":"","":""})
         var datesfinal = {
-          hr_email:"ziprecruiter784@gmail.com",
+          hr_email:"ann.watsonhr@gmail.com",
           referrance_email:"nero.niranjan@gmail.com",
           date_times:dates
         }
@@ -352,10 +352,24 @@ app.controller('load_data', function($scope, $http){
         $http.post("http://ec2-204-236-195-193.compute-1.amazonaws.com:8082/api/confirm_time_slot",
                   parameter
                  ).success(function(){
-            alert("Appointment made.");
+            alert("Mail sent to the referral");
         });
         $("#chose_time").show();
         $("#loadData1").hide();
+    }
+    $scope.confirmAppointment = function(){
+      $http.get("http://ec2-204-236-195-193.compute-1.amazonaws.com:8082/getSelectedTimeSlot/nero.niranjan@gmail.com"
+    ).success(function(response){
+      console.log("response" );
+          console.log(response );
+          var temp_date = response.selectedDate.split("-");
+          //$scope. = response.selectedDate
+
+         $scope.final_event_date = temp_date[0];
+          $scope.final_evet_time = temp_date[1];
+          $scope.referral_email = response.referral_email;
+
+     });
     }
 
     $scope.removeDate=function(dat)
@@ -385,34 +399,17 @@ app.controller('load_data', function($scope, $http){
             alert("Cannot send zero records...");
             return;
         }
-        $http.post('url',{
-                      'summary': 'Blah Blah Blah',
-                      'location': 'Blah Blah Blah',
-                      'description': 'Blah Blah BlahBlah Blah Blah',
-                      'start': {
-                        'dateTime': '2017-05-06T19:00:00-07:00',
-                        'timeZone': 'America/Los_Angeles',
-                      },
-                      'end': {
-                        'dateTime': '2017-05-06T21:00:00-07:00',
-                        'timeZone': 'America/Los_Angeles',
-                      },
-                      'recurrence': [
-                        'RRULE:FREQ=DAILY;COUNT=2'
-                      ],
-                      'attendees': [
-                        {'email': 'nero.niranjan@gmail.com'},
-                      ],
-                      'reminders': {
-                        'useDefault': false,
-                        'overrides': [
-                          {'method': 'email', 'minutes': 24 * 60},
-                          {'method': 'popup', 'minutes': 10},
-                        ]
-                      }
-                    }).success(function(){
-                           alert("mail sent successfully.");
+//        alert("I am working:");
+        $http.post('http://ec2-204-236-195-193.compute-1.amazonaws.com:8082/createAppointment',{
+                      'subject' : $("#sub").val(),
+                      'candidate' : "Niranjan Bhaskar",
+                      'starttime' :   moment($scope.final_event_date,"DD/MM/YYHH:mm").format(),
+                      'endtime' : moment($scope.final_evet_time,"DD/MM/YYHH:mm").format(),
+                      'referral' :   $scope.referral_email
 
-                           });
+                   }).success(function(){
+                           alert("Appointment booked successfully.");
+
+                          });
     }
 });

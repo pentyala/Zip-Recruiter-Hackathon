@@ -27,8 +27,9 @@
             <a href="#!" class="brand-logo center">HR Portal</a>
             <ul class="left hide-on-med-and-down">
               <li><a href="#!">Home</a></li>
-              <li><a href="#!">Find Candidates</a></li>
               <li><a href="#!">Schedules Appointments</a></li>
+              <li><a href="ShowCalendar.html">View Appointments</a></li>
+                
               <li class="active"><a href="collapsible.html">Referrals List</a></li>
             </ul>
           </div>
@@ -54,13 +55,13 @@
             <br />
             <div style="background-color:#eee;" class="" id="">
               <div id="c1" class="side_menu" >
-                <a id="c1" class="side_menu" href="#"> Pavan Kumar Gondhi</a>
+                <a id="c1" class="side_menu" href="#"> Niranjan</a>
               </div>
               <div id="c2" class="side_menu">
-                <a id="c2" class="side_menu"  href="#"> Aditya Pentyala</a>
+                <a id="c2" class="side_menu"  href="#"> Pentyala</a>
               </div>
               <div id="c3" class="side_menu">
-                <a id="c3" class="side_menu" href="#"> Niranjan</a>
+                <a id="c3" class="side_menu" href="#"> Nero Goku</a>
               </div>
               <div id="c4" class="side_menu">
                 <a id="c4" class="side_menu" href="#"> Harshita Jain</a>
@@ -99,18 +100,19 @@
               <div id="cand1">
                 <div class="col s12">
                   <br>
-                  <h5 class="page-header"><b>PAVAN KUMAR GONDHI</b></h5>
+                  <h5 class="page-header"><b>Natalie</b></h5>
                   <h5><b>JOB APPLIED :</b> Software developer Intern, Cisco</h5>
                   <div class = "col s12">
                     <br>
                     <nav>
-                     <div class="nav-wrapper">
+                     <div style="background-color:#eee;" class="nav-wrapper">
                        <ul class="left hide-on-med-and-down">
                          <li><a class="waves-effect waves-light btn" onclick="markComplete()">Mark Complete</a></li>
                          <li><a class="waves-effect waves-light btn" onclick="markInComplete()">Mark Incomplete</a></li>
                          <li><a class="waves-effect waves-light btn" onclick="markCancelComplete()">Cancel Event</a></li>
                          <li><a class="waves-effect waves-light btn" onclick="markDelComplete()">Delete Event</a></li>
                          <li><a class="waves-effect waves-light btn" onclick="markUndoComplete()">Undo</a></li>
+                         <li><a class="waves-effect waves-light btn red" onclick="alert('Warning: Sending appointment requests to all. Click OK to proceed.')">Send all</a></li>  
                        </ul>
                      </div>
                    </nav>
@@ -136,13 +138,13 @@
                           <a class="modal-trigger waves-effect waves-light btn" href="#getFreeTime"><span style="font-size:12px">Get timeslots</span></a>
                           <div id="getFreeTime" class="modal modal-fixed-footer">
                             <div class="modal-content">
-                              <p id="hiddable_p2">
-                              <h6>
-                              <center>Choose the start and end date...</center>
-                                </h6>
-                              </p>
-                              <br>
                               <div id="chose_time" class="row">
+                                  <p id="hiddable_p2">
+                              <h6>
+                                <center>Choose the start and end date...</center>
+                                </h6>
+                                </p>
+                                <br />
                               <div class="col s3 center">Start Date : </div>
                               <div class="col s3">
                                 <div class="">
@@ -155,7 +157,7 @@
                               </div>
                             </div>
                               <div id="loadData1">
-                                Select a time slot to confirm.
+                                Please click a date to remove them from your list of availabilities.
                                 <div class="row">
                                   <div ng-repeat = "x in finaldisplay">
                                     <div class="col s6">
@@ -172,7 +174,7 @@
                             </div>
                             </div>
                             <div class="modal-footer">
-                              <a href="#!" id="temp_har" class="modal-action modal-close waves-effect waves-green btn-flat "  ng-click="sendDates()">Send</a>
+                              <a href="#!" id="temp_har" class="modal-action modal-close waves-effect waves-green btn-flat "  ng-click="sendDates()">Send Email</a>
                                 <a href="#!" class="waves-effect waves-green btn-flat" id="temp_adi" ng-click="senddata()" >Get Time Slots</a>
 
                             </div>
@@ -181,30 +183,30 @@
                       </div>
                       <div class="col s2">
                         <div class="input_field inline">
-                          <a class="modal-trigger waves-effect waves-light btn" href="#createAppointment"><span style="font-size:10px">Create_Appointment</span></a>
-                          <div id="createAppointment" class="modal modal-fixed-footer" ng-controller = "myCtrl">
+                          <a class="modal-trigger waves-effect waves-light btn" href="#createAppointment" ng-click="confirmAppointment()"><span style="font-size:10px">Create_Appointment</span></a>
+                          <div id="createAppointment" class="modal modal-fixed-footer" >
                             <div class="modal-content"></form>
                               <div class = " col s12">
                                 <div class = "">
                                   <br>
                                   <div class = " col s12">
                                     <div class = "">
-                                      <input type="text" placeholder="Referral's Email Address">
+                                      <input type="text" placeholder="Referral's Email Address" value={{referral_email}}>
                                     </div>
                                   </div>
                                 </div>
                                 <br>
 
-                                  <br>
+                                 <br>
                                   <div class = " col s12">
                                     <div class = "">
-                                      <input type="text" placeholder="Email Subject">
+                                      <input type="text" placeholder="Email Subject" id="sub">
                                     </div>
                                   </div>
                                   <div class="row">
                                   <div class = "col s6">
                                     <div class = "">
-                                      <input type="text" placeholder="Referral's Name">
+                                      <input type="text" placeholder="Referral's Name" value = "Niranjan Bhaskar">
                                     </div>
                                   </div>
                                   <div class = "col s6">
@@ -216,19 +218,19 @@
                                 <div class="row">
                                   <div class = " col s6">
                                     <div class = "">
-                                      Event Start Date : 11th May,2017
+                                      Event Start Date : {{final_event_date}}
                                     </div>
                                   </div>
                                   <div class = " col s6">
                                     <div class = "">
-                                      Event Start Time : 11:00 AM
+                                      Event End Date : {{final_evet_time}}
                                     </div>
                                   </div>
                                 </div>
                               </div></form>
                             </div>
                             <div class="modal-footer">
-                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="confirm_event()">CONFIRM</a>
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="sendSelectedDates()">Schedule</a>
                             </div>
                           </div>
                         </div>
@@ -244,17 +246,17 @@
                       <div class="row">
                         <div class="col s2">
                           <div class="input-field inline">
-                            Aditya Kiran Pentyala
+                            Ranjith
                           </div>
                         </div>
                         <div class="col s2">
                           <div class="input-field inline">
-                            pentyala@usc.edu
+                            rajith@usc.edu
                           </div>
                         </div>
                         <div class="col s2">
                           <div class="input-field inline">
-                            +1(513)208-8768
+                            +1(513)244-8558
                           </div>
                         </div>
                         <div class="col s2">

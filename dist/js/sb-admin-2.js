@@ -337,10 +337,7 @@ app.controller('load_data', function($scope, $http){
         jsona.push({"":"","":""})
         $http.post("url"
                   ,
-                   { 'timeMin' : startDate,
-                     'timeMax' : endDate,
-                     'id' : "pavangondhi@gmail.com"
-                   }
+                   $scope.sendableData
                  ).success(function(){
             alert("Mail sent");
         });

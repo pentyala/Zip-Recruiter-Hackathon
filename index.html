@@ -128,7 +128,20 @@
                                                 <div class="modal-content">
                                                   <p id="hiddable_p1">Please wait.Fetching the available time slots...</p>
                                                     <div id="loadData1">
-                                                        <div ng-repeat = "x in "
+                                                        Select a time slot to confirm.
+                                                        <div class="row">
+                                                        <div ng-repeat = "x in availableSlots">
+                                                            <div class="col s6">
+                                                            <div>{{x.date}}</div>
+                                                            </div>
+                                                            <div class="col s6">
+                                                                <div ng-repeat = "y in x.times">
+                                                                    {{y}} <br />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                            <hr />
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

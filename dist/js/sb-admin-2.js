@@ -192,6 +192,9 @@ app.controller('load_data', function($scope, $http){
                      'id' : "pavangondhi@gmail.com"
                    }).success(function(response){
             $scope.availableSlots = response.data;
+            /*
+                Data is the JSON file, parse it.
+            */
         });
     }
     

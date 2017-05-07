@@ -208,6 +208,9 @@ app.controller("myCtrl", function($scope, $http) {
 app.controller('load_data', function($scope, $http){
     $scope.senddata = function(){
 //        console.log("I asmf idiot");
+        $("#chose_time").hide();
+        $("#loadData1").show();
+        
         var startDate = $("#sdate1").val();
 //        console.log(startDate);
         startDate = moment(startDate, "D MMM, YYYY").format();
@@ -310,6 +313,12 @@ app.controller('load_data', function($scope, $http){
     }
     
     $scope.sendDates = function(){
+        console.log($scope.finaldisplay.length);
+        if($scope.finaldisplay.length == 0)
+        {
+            alert("Cannot send zero records...");
+            return;
+        }
         $http.post("url"
 //                  ,
 //                   { 'timeMin' : startDate,
@@ -319,6 +328,8 @@ app.controller('load_data', function($scope, $http){
                  ).success(function(){
             alert("Mail sent");
         });
+        $("#chose_time").show();
+        $("#loadData1").hide();
     }
     
     $scope.removeDate=function(dat)
@@ -343,8 +354,6 @@ app.controller('load_data', function($scope, $http){
     
     $scope.sendSelectedDates = function(){
         console.log($scope.finaldisplay.length);
-        $("#chose_time").hide();
-        $("#loadData1").show();
         if($scope.finaldisplay.length == 0)
         {
             alert("Cannot send zero records...");

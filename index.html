@@ -132,7 +132,7 @@
                                                         <div class="row">
                                                         <div ng-repeat = "x in availableSlots">
                                                             <div class="col s6">
-                                                            <div>{{x.date}}</div>
+                                                                <div><a href="!" ng-click="removeDate(x.date)">{{x.date}}</a></div>
                                                             </div>
                                                             <div class="col s6">
                                                                 <div ng-repeat = "y in x.times">
@@ -145,7 +145,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Send</a>
+                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendSelectedDates">Send</a>
                                                 </div>
                                               </div>
                                         

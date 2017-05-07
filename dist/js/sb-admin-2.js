@@ -182,6 +182,7 @@ app.controller('load_data', function($scope, $http){
         startDate = moment(startDate, "D MMM, YYYY").format();
         var endDate = $("#edate1").val();
         startDate = moment(startDate, "D MMM, YYYY").format();
+        
         /*
         
             Waiting for the API.
@@ -198,4 +199,27 @@ app.controller('load_data', function($scope, $http){
         });
     }
     
+    $scope.removeDate=function(dat)
+    {
+        $scope.availableSlots = $scope.availableSlots.filter(function(el) {
+            return el.date !== dat;
+        });
+    }
+    
+    $scope.removeTime = function(dat, tim)
+    {
+        for(i=0; i<$scope.availableSlots.length;i++)
+        {
+            if($scope.availableSlots[i].date == dat)
+            {
+                $scope.availableSlots[i].times = $scope.availableSlots[i].times.filter(function(el){
+                   return el !== tim; 
+                });
+            }
+        }
+    }
+    
+    $scope.sendSelectedDates = function(){
+        
+    };
 });

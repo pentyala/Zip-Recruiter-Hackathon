@@ -309,6 +309,18 @@ app.controller('load_data', function($scope, $http){
         });
     }
     
+    $scope.sendDates = function(){
+        $http.post("url"
+//                  ,
+//                   { 'timeMin' : startDate,
+//                     'timeMax' : endDate,
+//                     'id' : "pavangondhi@gmail.com"
+//                   }
+                 ).success(function(){
+            alert("Mail sent");
+        });
+    }
+    
     $scope.removeDate=function(dat)
     {
         $scope.finaldisplay = $scope.finaldisplay.filter(function(el) {

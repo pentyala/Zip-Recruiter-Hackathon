@@ -307,24 +307,40 @@ app.controller('load_data', function($scope, $http){
 //                    $scope.finaldisplay[j].push($scope.availableSlots.times);
                 }
             }
-            console.log($scope.finaldisplay);
+//            console.log($scope.finaldisplay);
             
         });
     }
     
     $scope.sendDates = function(){
-        console.log($scope.finaldisplay.length);
+//        console.log($scope.finaldisplay.length);
         if($scope.finaldisplay.length == 0)
         {
             alert("Cannot send zero records...");
+            $("#chose_time").show();
+            $("#loadData1").hide();
             return;
         }
+        $scope.sendableData = [];
+        for(i=0;i<$scope.finaldisplay.length;i++)
+        {
+            var dt = $scope.finaldisplay[i].date;
+            console.log($scope.finaldisplay[i]);
+            console.log($scope.finaldisplay[i].times);
+            for(j=0;j<$scope.finaldisplay[i].times.length;j++)
+            {
+                $scope.sendableData.push({"date_times":(dt+$scope.finaldisplay[i].times[j])+" - "+(moment(dt, "DD/MM/YY").add(15,'m').format("DD/MM/YYHH:mm"))});
+            }
+        }
+        console.log($scope.sendableData);
+        jsona = [];
+        jsona.push({"":"","":""})
         $http.post("url"
-//                  ,
-//                   { 'timeMin' : startDate,
-//                     'timeMax' : endDate,
-//                     'id' : "pavangondhi@gmail.com"
-//                   }
+                  ,
+                   { 'timeMin' : startDate,
+                     'timeMax' : endDate,
+                     'id' : "pavangondhi@gmail.com"
+                   }
                  ).success(function(){
             alert("Mail sent");
         });

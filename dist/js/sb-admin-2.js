@@ -203,35 +203,6 @@ app.controller("myCtrl", function($scope, $http) {
       }
 });
 
-var app = angular.module('mod_app', []);
-
-app.controller("myCtrl", function($scope, $http) {
-
- $http({
-      method: 'GET',
-      url: 'index.php'
-  }).then(function successCallback(response) {
-        $scope.event_details = response;
-        $scope.summary = response.summary;
-        $scope.name= "Niranjan";
-        $scope.email = response.attendees[0].email;
-        var temp_date = response.start.dateTime;
-        temp_date = moment(temp_date).format("YYYY-MM-DD HH:mm:ss");
-        var temp_arr = temp_date.split(" ");
-        $scope.date_event = temp_arr[0];
-        $scope.time_event = temp_arr[1];
-      }, function errorCallback(response) {});
-
-     $scope.confirm_event = function(){
-        var email = "sample" ; /// get from localstorage
-        $scope.event_details.attendees[0].email = email;
-        $http({
-            method: 'POST',
-            data: $scope.event_details,
-            url: 'index.php'
-        }).then(function successCallback(response) {  }, function errorCallback(response) {});
-      }
-});
 
 app.controller('load_data', function($scope, $http){
     $scope.senddata = function(){
@@ -250,7 +221,7 @@ app.controller('load_data', function($scope, $http){
         
             Waiting for the API.
         */
-        $http.get('test.json'
+        $http.post('test.json'
 //                  ,
 //                   { 'timeMin' : startDate,
 //                     'timeMax' : endDate,
@@ -269,39 +240,39 @@ app.controller('load_data', function($scope, $http){
                 $scope.busySlots[i].end = moment($scope.busySlots[i].end);
             }
             
-            $scope.availableSlots = [];
-            test = $scope.startDate;
-            alert($scope.startDate);
-            smallStart = moment($scope.startDate);
-            smallEnd = moment(moment($scope.startDate).add(15, 'm')).format();
-            console.log(smallEnd);
-            while(smallEnd<=$scope.endDate)
-            {
-                            console.log("kill me again......."+smallEnd);
-
-                flag = false;
-                for(i=0;i<$scope.busySlots.length;i++)
-                {
-                    /*2017-05-05T11:00:00-07:00*/
-                    if(($scope.busySlots[i].startDate<smallEnd && $scope.busySlots[i].endDate>smallEnd) || ($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallStart) || (($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallEnd)) )
-                        flag = true;
-                }
-                if(!flag)
-                {
-                    test = $scope.availableSlots;
-                    $scope.availableSlots.push({date: smallStart.format("yyyy-mm-dd"), times : smallStart.format("H:m")});
-                    console.log("sdfjhdjdkvfdslkjfvdsk");
-                    console.log($scope.availableSlots);
-                }
-                smallStart = smallEnd
-                test = smallEnd;
-                smallEnd = moment(moment(smallEnd).add(15, 'm')).format();
-            
-            }
-            
-//            test = $scope.availableSlots;
-            console.log($scope.availableSlots);
-            
+            $scope.availableSlots = [{ date: '25/01/17', times: [ '12:00', '13:00' ] }, { date: '26/01/17', times: [ '12:00', '13:00' ] }];
+//            test = $scope.startDate;
+//            alert($scope.startDate);
+//            smallStart = moment($scope.startDate);
+//            smallEnd = moment(moment($scope.startDate).add(15, 'm')).format();
+//            console.log(smallEnd);
+//            while(smallEnd<=$scope.endDate)
+//            {
+//                            console.log("kill me again......."+smallEnd);
+//
+//                flag = false;
+//                for(i=0;i<$scope.busySlots.length;i++)
+//                {
+//                    2017-05-05T11:00:00-07:00
+//                    if(($scope.busySlots[i].startDate<smallEnd && $scope.busySlots[i].endDate>smallEnd) || ($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallStart) || (($scope.busySlots[i].startDate>smallStart && $scope.busySlots[i].endDate<smallEnd)) )
+//                        flag = true;
+//                }
+//                if(!flag)
+//                {
+//                    test = $scope.availableSlots;
+//                    $scope.availableSlots.push({date: smallStart.format("yyyy-m-d"), times : smallStart.format("H:m")});
+//                    console.log("sdfjhdjdkvfdslkjfvdsk");
+//                    console.log($scope.availableSlots);
+//                }
+//                smallStart = smallEnd
+//                test = smallEnd;
+//                smallEnd = moment(moment(smallEnd).add(15, 'm')).format();
+//            
+//            }
+//            
+////            test = $scope.availableSlots;
+//            console.log($scope.availableSlots);
+//            
             
             /*
                 Data is the JSON file, parse it.
@@ -329,7 +300,38 @@ app.controller('load_data', function($scope, $http){
         }
     }
     
-//    $scope.sendSelectedDates = function(){
-//        $http.
-//    };
+    $scope.sendSelectedDates = function(){
+        $http.post('url'
+                  ,
+                   {
+                      'summary': 'Blah Blah Blah',
+                      'location': 'Blah Blah Blah',
+                      'description': 'Blah Blah BlahBlah Blah Blah',
+                      'start': {
+                        'dateTime': '2017-05-06T19:00:00-07:00',
+                        'timeZone': 'America/Los_Angeles',
+                      },
+                      'end': {
+                        'dateTime': '2017-05-06T21:00:00-07:00',
+                        'timeZone': 'America/Los_Angeles',
+                      },
+                      'recurrence': [
+                        'RRULE:FREQ=DAILY;COUNT=2'
+                      ],
+                      'attendees': [
+                        {'email': 'nero.niranjan@gmail.com'},
+                      ],
+                      'reminders': {
+                        'useDefault': false,
+                        'overrides': [
+                          {'method': 'email', 'minutes': 24 * 60},
+                          {'method': 'popup', 'minutes': 10},
+                        ],
+                      },
+                    };
+                 ).success(function{
+                           alert("mail sent successfully.");
+                           
+                           });
+    };
 });

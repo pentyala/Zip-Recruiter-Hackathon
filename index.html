@@ -16,6 +16,8 @@
       background-color: #9e9e9e;
       }
     </style>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      
   </head>
   <body>
     <body ng-controller="load_data">
@@ -137,8 +139,9 @@
                               <p id="hiddable_p2">
                               <h6>
                               <center>Choose the start and end date...</center>
-                              <h6>
+                                </h6>
                               </p>
+                              <div id="chose_time" class="row">
                               <div class="col s3"></div>
                               <div class="col s3">
                                 <div class="">
@@ -149,8 +152,27 @@
                                 <input type='datetime' id="edate1" class="datepicker" />
                               </div>
                             </div>
+                              <div id="loadData1">
+                                Select a time slot to confirm.
+                                <div class="row">
+                                  <div ng-repeat = "x in finaldisplay">
+                                    <div class="col s6">
+                                      <div><a href="!" ng-click="removeDate(x.date)">{{x.date}}</a></div>
+                                    </div>
+                                    <div class="col s6">
+                                      <div ng-repeat = "y in x.times">
+                                          <a href="#" ng-click="removeTime(x.date,y)">{{y}}</a> <br />
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <hr />
+                                </div>
+                            </div>
+                            </div>
                             <div class="modal-footer">
-                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="senddata()">Send</a>
+                              <a href="#!" id="temp_har" class="modal-action modal-close waves-effect waves-green btn-flat " >Send</a>
+                                <a href="#!" class="waves-effect waves-green btn-flat" id="temp_adi" ng-click="senddata()" >Get Time Slots</a>
+                                
                             </div>
                           </div>
                         </div>
@@ -551,7 +573,6 @@
       </div>
       <!-- /#wrapper -->
       <!-- jQuery -->
-      <script src="vendor/jquery/jquery.min.js"></script>
       <!-- Bootstrap Core JavaScript -->
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
@@ -568,7 +589,6 @@
         selectYears: 15 // Creates a dropdown of 15 years to control year
         });
       </script>
-  </body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
   <script>

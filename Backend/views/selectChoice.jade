@@ -1,0 +1,25 @@
+doctype html
+html
+  head   
+
+
+  body
+    .container
+
+      h1 Select a 15 Min Slot
+      
+      form(name = "find", action = "/updateTimeSlot", method = "post")
+
+        label   
+            select(name="selectedDate")
+              for date in slotObj.available_dates
+                option(value=date) #{date}
+
+
+        br
+        br
+        input(type="hidden", value=slotObj.hr_email name="hr_email")
+        input(type="hidden", value=slotObj.referral_email name="referral_email")
+        input(type="submit", value="Submit")
+
+        
